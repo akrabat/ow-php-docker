@@ -1,0 +1,15 @@
+#!/bin/bash
+
+
+# Install PHP
+if [ ! -f /usr/bin/php ]; then
+    echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+    apk add --update php7 php7-json
+fi
+
+# /usr/bin/php /action/src/action.php "$@"
+cd /action
+/usr/bin/php -r 'require "src/action.php"; echo json_encode(main(json_decode($argv[1], true)));' -- "$@"
+
+
+# /action/src/action.php "$@"
