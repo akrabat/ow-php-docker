@@ -25,7 +25,7 @@ fi
 
 
 echo "Updating OpenWhisk action '$OW_ACTION_NAME'"
-result=`wsk action update --docker $OW_ACTION_NAME action.zip --web true`
+result=`wsk action update $OW_ACTION_NAME action.zip --web true --native`
 if [[ ${result} != *"ok:"* ]]; then
     echo "Update failed"
     echo $result
